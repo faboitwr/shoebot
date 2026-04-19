@@ -41,7 +41,8 @@ def scraper():
         else:
             for shoe in shoe_cards:
                 #default assume in stock
-                stock = True
+                stock = 1
+                sale = 0
 
                 #obtain shoe name
                 shoe_n = shoe.select_one("span.product-card__title").get_text(strip = True)
@@ -52,15 +53,16 @@ def scraper():
                 else:
                     shoe_p = float(shoe.select_one("sale-price.text-subdued").get_text(strip = True)[11:-4])
                 
-                #check if shoe is out of stock
+                #check if shoe is out of stock/on sale
                 prod_listing = shoe.select_one("div.product-card__badge-list")
-                if prod_listing is not None and prod_listing.get_text(strip = True) == "Sold out":
-                    stock = False
 
-                temp_l.append([shoe_n, shoe_p, stock])   
+                if prod_listing is not None and prod_listing.get_text(strip = True) == "Sold out":
+                    stock = 0
+                elif prod_listing is not None and prod_listing.get_text(strip = True)[0:4] == "Save":
+                    sale = 1
+
+                temp_l.append((shoe_n, shoe_p, stock, sale))   
 
             page_num += 1
     
     return temp_l
-        
-print(scraper())
