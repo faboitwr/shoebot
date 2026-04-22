@@ -35,5 +35,5 @@ def ins_func(s_det):
     conn.close()
 
 init_func()
-for i in scraper():
+for i in scraper()[0]:
     ins_func(i)

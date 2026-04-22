@@ -10,6 +10,9 @@ def scraper():
     complete = False
     temp_l = []
 
+    temp_stock = []
+    temp_sale = []
+
     #connect to website
     while complete is False:
         ref_site = f"https://shop.boulderplanet.sg/collections/climbing-shoes/climbing-shoes?page={page_num}"
@@ -58,11 +61,14 @@ def scraper():
 
                 if prod_listing is not None and prod_listing.get_text(strip = True) == "Sold out":
                     stock = 0
+                    temp_stock.append((shoe_n, shoe_p, stock, sale))
+
                 elif prod_listing is not None and prod_listing.get_text(strip = True)[0:4] == "Save":
                     sale = 1
+                    temp_sale.append((shoe_n, shoe_p, stock, sale))
 
                 temp_l.append((shoe_n, shoe_p, stock, sale))   
 
             page_num += 1
     
-    return temp_l
+    return (temp_l, temp_stock, temp_sale)
