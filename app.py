@@ -51,5 +51,15 @@ Shoe(s) on sale are:
 New shoe(s) are:
 {new}
 """
+    
+    print(output)
 
     return output
+
+app_run()
+
+run = True
+while run == True:
+    brk = input("Input anything to break: ")
+    if brk != None:
+        run = False
