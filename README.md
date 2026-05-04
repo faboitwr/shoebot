@@ -1,6 +1,8 @@
 # ClimbShoeBot
 ClimbShoeBot is designed to update the user to important changes to climbing shoe availability or prices in the web shoe store of a climbing gym.
 
+Currently, a proof of concept, code to be fixed over time.
+
 ## Systems Overview
 A webscraper will be made to recheck the shop page every day. The bot takes note of the shoes that have gone out of stock, gone on sale, or are new items and can then alert the user via an email/Telegram/Discord message.
 
