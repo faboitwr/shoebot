@@ -15,5 +15,6 @@ async def on_ready():
     #print("Test.")
     channel = bot.get_channel(channel_)
     await channel.send(shoestate)
+    await bot.close()
 
 bot.run(bot_token)
