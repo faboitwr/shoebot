@@ -3,6 +3,8 @@ ClimbShoeBot is designed to update the user to important changes to climbing sho
 
 Currently, a proof of concept, code to be fixed over time.
 
+Ran using shell command in crontab on a Raspberry Pi.
+
 ## Systems Overview
 A webscraper will be made to recheck the shop page every day. The bot takes note of the shoes that have gone out of stock, gone on sale, or are new items and can then alert the user via an email/Telegram/Discord message.
 
